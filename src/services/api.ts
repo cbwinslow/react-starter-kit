@@ -67,7 +67,7 @@ export const ApiService = {
   /**
    * Add a comment to an analysis result
    */
-  addComment(analysisId: string, comment: Omit<Comment, 'id' | 'timestamp' | 'likes'>): Promise<Comment> {
+  addComment(_analysisId: string, comment: Omit<Comment, 'id' | 'timestamp' | 'likes'>): Promise<Comment> {
     return new Promise((resolve) => {
       setTimeout(() => {
         const newComment: Comment = {
@@ -78,10 +78,7 @@ export const ApiService = {
         };
         
         // In a real app, this would update the backend
-        const analysis = mockAnalysisResults.find(r => r.id === analysisId);
-        if (analysis) {
-          analysis.comments.push(newComment);
-        }
+        // For mock purposes, we just return the comment without mutating shared state
         
         resolve(newComment);
       }, 300);
@@ -94,13 +91,10 @@ export const ApiService = {
   likeAnalysis(analysisId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
+        // In a real app, this would update the backend
+        // For mock purposes, we just return the incremented count
         const analysis = mockAnalysisResults.find(r => r.id === analysisId);
-        if (analysis) {
-          analysis.likes += 1;
-          resolve(analysis.likes);
-        } else {
-          resolve(0);
-        }
+        resolve(analysis ? analysis.likes + 1 : 1);
       }, 200);
     });
   },
@@ -108,18 +102,12 @@ export const ApiService = {
   /**
    * Like a comment
    */
-  likeComment(analysisId: string, commentId: string): Promise<number> {
+  likeComment(_analysisId: string, _commentId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const analysis = mockAnalysisResults.find(r => r.id === analysisId);
-        if (analysis) {
-          const comment = analysis.comments.find(c => c.id === commentId);
-          if (comment) {
-            comment.likes += 1;
-            resolve(comment.likes);
-          }
-        }
-        resolve(0);
+        // In a real app, this would update the backend
+        // For mock purposes, we just return the incremented count
+        resolve(1);
       }, 200);
     });
   },
