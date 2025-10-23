@@ -1,0 +1,35 @@
+.feed-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.feed-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.feed-header h2 {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.feed-subtitle {
+  margin: 0.5rem 0 0 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.feed-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  font-size: 1.125rem;
+}
